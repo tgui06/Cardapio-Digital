@@ -1,0 +1,12 @@
+{
+  // Flutter instalado fora do PATH nesta máquina.
+  "dart.flutterSdkPath": "C:\\Users\\User\\flutter",
+  "dart.lineLength": 120,
+  // Salvar um .dart aplica o hot reload no emulador.
+  "dart.flutterHotReloadOnSave": "all",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.rulers": [120]
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell"
+}

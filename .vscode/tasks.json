@@ -1,0 +1,61 @@
+{
+  // Ctrl+Shift+B sobe ERP + Vite + emulador. F5 faz o mesmo e roda o app com hot reload.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ERP: servidor (localhost:8008)",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/dev/iniciar-erp.ps1"],
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "erp", "reveal": "silent" },
+      "problemMatcher": {
+        "owner": "forven-erp",
+        "pattern": { "regexp": "^__sem_problemas__$" },
+        "background": { "activeBegin": true, "beginsPattern": ".", "endsPattern": "Forven ERP em|Já existe" }
+      }
+    },
+    {
+      "label": "ERP: Vite (painel com hot reload)",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/dev/iniciar-vite.ps1"],
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "erp", "reveal": "silent" },
+      "problemMatcher": {
+        "owner": "forven-vite",
+        "pattern": { "regexp": "^__sem_problemas__$" },
+        "background": { "activeBegin": true, "beginsPattern": ".", "endsPattern": "ready in|já está rodando" }
+      }
+    },
+    {
+      "label": "Emulador: Medium Tablet",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/dev/iniciar-emulador.ps1"],
+      "presentation": { "reveal": "silent" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Cardápio: subir ERP + Vite + emulador",
+      "dependsOn": ["ERP: servidor (localhost:8008)", "ERP: Vite (painel com hot reload)", "Emulador: Medium Tablet"],
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "App: limpar dados (volta ao pareamento)",
+      "type": "process",
+      "command": "${env:LOCALAPPDATA}/Android/Sdk/platform-tools/adb.exe",
+      "args": ["shell", "pm", "clear", "br.com.forven.cardapio_digital"],
+      "problemMatcher": []
+    },
+    {
+      "label": "App: testes",
+      "type": "process",
+      "command": "C:/Users/User/flutter/bin/flutter.bat",
+      "args": ["test"],
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

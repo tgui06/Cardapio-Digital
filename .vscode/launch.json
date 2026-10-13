@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // F5: sobe ERP + Vite + emulador (se ainda não estiverem rodando) e abre o app com hot reload.
+      "name": "Cardápio (emulador + ERP local)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "preLaunchTask": "Cardápio: subir ERP + Vite + emulador"
+    },
+    {
+      "name": "Cardápio (só o app)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart"
+    }
+  ]
+}
